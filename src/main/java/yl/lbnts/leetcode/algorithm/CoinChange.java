@@ -1,23 +1,22 @@
 package yl.lbnts.leetcode.algorithm;
 
 import java.util.Arrays;
-import java.util.Map;
 
 public class CoinChange {
     public static void main(String[] args) {
-//        System.out.println(coinCount2(new int[]{1,2,5}, 11));
-//        System.out.println(coinCount2(new int[]{2}, 3));
-//        System.out.println(coinCount2(new int[]{1}, 0));
-//        System.out.println(coinCount2(new int[]{2}, 1));
+        System.out.println(coinCountGreedyAlgorithms(new int[]{1,2,5}, 11));
+        System.out.println(coinCountGreedyAlgorithms(new int[]{2}, 3));
+        System.out.println(coinCountGreedyAlgorithms(new int[]{1}, 0));
 
-//        System.out.println(coinChange(new int[]{2}, 3));
-        System.out.println(coinChange(new int[]{1,2,5}, 11));
-        System.out.println(coinChange1(new int[]{1,2,5}, 11));
+        System.out.println(coinChangeDynamicProgramming(new int[]{2}, 3));
+        System.out.println(coinChangeDynamicProgramming(new int[]{1,2,5}, 11));
+        System.out.println(coinChangeDynamicProgramming(new int[]{1}, 0));
+        System.out.println(coinChangeRecursion(new int[]{1,2,5}, 11));
 
     }
 
 
-    public static int coinChange(int[] coins, int amount) {
+    public static int coinChangeDynamicProgramming(int[] coins, int amount) {
 
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
@@ -34,30 +33,11 @@ public class CoinChange {
     }
 
 
-    public static int coinChange1(int[] coins, int amount) {
+    public static int coinChangeRecursion(int[] coins, int amount) {
 
         int ans = coinCount(coins, amount);
         return (ans == Integer.MAX_VALUE) ?  -1 : ans;
     }
-    public static int coinCount2(int[] coins, int amount) {
-        int currentAmount = amount;
-
-        if(amount == 0){
-            return 0;
-        }
-
-        int max  = findMax(coins);
-
-        if(max <= amount){
-            currentAmount=currentAmount-max;
-            return 1 + coinCount2(coins, currentAmount);
-        }
-
-
-        coins = deleteEl(max, coins);
-        return coinCount2(coins, currentAmount);
-    }
-
     private static int coinCount(int[] coins, int amount) {
 
         if(amount == 0) {
@@ -80,6 +60,29 @@ public class CoinChange {
         }
         return minCoins;
     }
+    public static int coinCountGreedyAlgorithms(int[] coins, int amount) {
+        int currentAmount = amount;
+
+        if(amount == 0){
+            return 0;
+        }
+
+        if(coins.length == 1 && amount<coins[0]){
+            return -2;
+        }
+
+        int max  = findMax(coins);
+
+        if(max <= amount){
+            currentAmount=currentAmount-max;
+            return 1 + coinCountGreedyAlgorithms(coins, currentAmount);
+        }
+
+
+        coins = deleteEl(max, coins);
+        return coinCountGreedyAlgorithms(coins, currentAmount);
+    }
+
 
     private static int findMax(int[] coins){
         int max = coins[0];

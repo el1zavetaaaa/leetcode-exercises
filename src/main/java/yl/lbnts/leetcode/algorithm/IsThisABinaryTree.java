@@ -5,33 +5,33 @@ import java.util.*;
 public class IsThisABinaryTree {
 
     public static void main(String[] args) {
-        Node node5 = new Node(1, null, null);
-        Node node6 = new Node(6, null, null);
-        Node node4 = new Node(5, node6, node5);
-        Node node3  = new Node(1, null, null);
-        Node node2 = new Node(2, node3, null);
-        Node node1 = new Node(3, node2, node4);
+        IsBinaryTreeNode isBinaryTreeNode5 = new IsBinaryTreeNode(1, null, null);
+        IsBinaryTreeNode isBinaryTreeNode6 = new IsBinaryTreeNode(6, null, null);
+        IsBinaryTreeNode isBinaryTreeNode4 = new IsBinaryTreeNode(5, isBinaryTreeNode6, isBinaryTreeNode5);
+        IsBinaryTreeNode isBinaryTreeNode3 = new IsBinaryTreeNode(1, null, null);
+        IsBinaryTreeNode isBinaryTreeNode2 = new IsBinaryTreeNode(2, isBinaryTreeNode3, null);
+        IsBinaryTreeNode isBinaryTreeNode1 = new IsBinaryTreeNode(3, isBinaryTreeNode2, isBinaryTreeNode4);
 
-        Node node62 = new Node(10, null, null);
-        Node node52 = new Node(6, null, null);
-        Node node42 = new Node(8, node52, node62);
-        Node node32 = new Node(2, null, null);
-        Node node22 = new Node(5, node32, null);
-        Node node12 = new Node(7, node22, node42);
+        IsBinaryTreeNode isBinaryTreeNode62 = new IsBinaryTreeNode(10, null, null);
+        IsBinaryTreeNode isBinaryTreeNode52 = new IsBinaryTreeNode(6, null, null);
+        IsBinaryTreeNode isBinaryTreeNode42 = new IsBinaryTreeNode(8, isBinaryTreeNode52, isBinaryTreeNode62);
+        IsBinaryTreeNode isBinaryTreeNode32 = new IsBinaryTreeNode(2, null, null);
+        IsBinaryTreeNode isBinaryTreeNode22 = new IsBinaryTreeNode(5, isBinaryTreeNode32, null);
+        IsBinaryTreeNode isBinaryTreeNode12 = new IsBinaryTreeNode(7, isBinaryTreeNode22, isBinaryTreeNode42);
 
-        System.out.println(checkBST(node1));
-        System.out.println(checkBST(node12));
+        System.out.println(checkBST(isBinaryTreeNode1));
+        System.out.println(checkBST(isBinaryTreeNode12));
 
     }
 
-    private static boolean checkBST(Node root) {
+    private static boolean checkBST(IsBinaryTreeNode root) {
         List<Integer> nodes = new ArrayList<>();
 
         return checkBST(root, nodes);
 
     }
 
-    private static boolean checkBST(Node root, List<Integer> nodes){
+    private static boolean checkBST(IsBinaryTreeNode root, List<Integer> nodes){
         if(root == null){
             return true;
         }
@@ -58,16 +58,16 @@ public class IsThisABinaryTree {
 
 }
 
-    class Node {
-        public Node(int data, Node left, Node right) {
+    class IsBinaryTreeNode {
+        public IsBinaryTreeNode(int data, IsBinaryTreeNode left, IsBinaryTreeNode right) {
             this.data = data;
             this.left = left;
             this.right = right;
         }
 
         int data;
-        Node left;
+        IsBinaryTreeNode left;
 
-        Node right;
+        IsBinaryTreeNode right;
     }
 

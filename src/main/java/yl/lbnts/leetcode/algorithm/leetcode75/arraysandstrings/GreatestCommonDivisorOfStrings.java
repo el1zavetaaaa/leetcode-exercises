@@ -1,4 +1,4 @@
-package yl.lbnts.leetcode.algorithm;
+package yl.lbnts.leetcode.algorithm.leetcode75.arraysandstrings;
 
 public class GreatestCommonDivisorOfStrings {
 

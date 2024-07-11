@@ -1,4 +1,4 @@
-package yl.lbnts.leetcode;
+package yl.lbnts.leetcode.algorithm.binarytreeordertraversal;
 
 import java.util.ArrayList;
 import java.util.List;
